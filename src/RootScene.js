@@ -91,7 +91,8 @@ class RootScene extends PureComponent {
 
         StatusBar.setBarStyle('light-content');
         // 试图渲染完成 加载组件单例
-        // 初始化storange 并设置全局变量
+        // 初始化storage 并设置全局变量
+        // global为系统自带，使用时无需import任何内容
         global.storage = StorageUtil.shareStroageUtilInstan();
     }
 

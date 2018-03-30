@@ -16,6 +16,12 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
+static NSString * const APP_IS_FIRST_LAUNCH = @"AppIsFirstLaunch";
+
+@interface AppDelegate()
+@property (nonatomic, strong)RCTRootView *rootView;
+@end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -26,29 +32,45 @@
   [JPUSHService setupWithOption:launchOptions appKey:appKey
                         channel:nil apsForProduction:nil];
   
+  
+  
   NSURL *jsCodeLocation;
 //  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
   jsCodeLocation = [NSURL URLWithString:@"http://192.168.10.202:8081/index.ios.bundle?platform=ios&dev=true"];
 
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+  self.rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"YouJoyLife"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
-  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-
+  self.rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [UIViewController new];
-  rootViewController.view = rootView;
-  self.window.rootViewController = rootViewController;
+  if ([[NSUserDefaults standardUserDefaults] objectForKey:APP_IS_FIRST_LAUNCH] == nil) {
+    GuideViewController *guideVC = [[GuideViewController alloc]init];
+    guideVC.delegate = self;
+    self.window.rootViewController = guideVC;
+  }else{
+    UIViewController *rootViewController = [UIViewController new];
+    rootViewController.view = self.rootView;
+    self.window.rootViewController = rootViewController;
+  }
   [self.window makeKeyAndVisible];
   
   [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
   [JPUSHService resetBadge];
-  
   self.clickType = @"launchFromKilled";
   [self performSelector:@selector(changeClickType) withObject:nil afterDelay:5];
-
+  
   return YES;
+}
+
+- (void)doSomethingForMe{
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = self.rootView;
+  self.window.rootViewController = rootViewController;
+  [self.window makeKeyAndVisible];
+  [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithBool:YES] forKey:APP_IS_FIRST_LAUNCH];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)changeClickType{

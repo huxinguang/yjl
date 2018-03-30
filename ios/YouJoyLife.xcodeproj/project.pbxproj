@@ -58,6 +58,8 @@
 		C99EC0561F31CD7300246849 /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C99EC0511F31CC6E00246849 /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C99EC0571F31CD7300246849 /* RSKImageCropper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99EC0521F31CC6E00246849 /* RSKImageCropper.framework */; };
 		C99EC0581F31CD7300246849 /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C99EC0521F31CC6E00246849 /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C9F3C2C5206DDD39001F81EB /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3C2C3206DDD39001F81EB /* GuideViewController.m */; };
+		C9F3C2C6206DDD39001F81EB /* GuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9F3C2C4206DDD39001F81EB /* GuideViewController.xib */; };
 		D1DFAF2CF2DA4051B6869FDD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AC49D1154C48188FC90F85 /* CoreTelephony.framework */; };
 		D85D6773B593428F8C710362 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1987E7F0DB246769EDC29BC /* libRNDeviceInfo.a */; };
 		DAED0B86042A4DFA8C581958 /* libRCTJPushModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBC2787AD141CA94290A13 /* libRCTJPushModule.a */; };
@@ -380,6 +382,9 @@
 		C99EC0521F31CC6E00246849 /* RSKImageCropper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = "<group>"; };
 		C99EC05A1F31CF8C00246849 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		C9E19F0C382542AA8F0999B9 /* imageCropPicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = imageCropPicker.xcodeproj; path = "../node_modules/react-native-image-crop-picker/ios/imageCropPicker.xcodeproj"; sourceTree = "<group>"; };
+		C9F3C2C2206DDD39001F81EB /* GuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		C9F3C2C3206DDD39001F81EB /* GuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		C9F3C2C4206DDD39001F81EB /* GuideViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideViewController.xib; sourceTree = "<group>"; };
 		CB8BA3474A924A79AE748571 /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		CF42B4E90AA546B1B7F2132E /* AVFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DC001275130E4B5BA1DB2876 /* MobileCoreServices.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -547,6 +552,9 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				C9F3C2C2206DDD39001F81EB /* GuideViewController.h */,
+				C9F3C2C3206DDD39001F81EB /* GuideViewController.m */,
+				C9F3C2C4206DDD39001F81EB /* GuideViewController.xib */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				C9487A671F25C64300EF69DC /* iconfont.ttf */,
@@ -1171,6 +1179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C9F3C2C6206DDD39001F81EB /* GuideViewController.xib in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				C9487A681F25C64300EF69DC /* iconfont.ttf in Resources */,
 			);
@@ -1239,6 +1248,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				C9F3C2C5206DDD39001F81EB /* GuideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
