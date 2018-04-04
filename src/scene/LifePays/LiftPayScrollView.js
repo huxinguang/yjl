@@ -5,7 +5,7 @@ import React, {PureComponent} from 'react';
 import {ScrollView,Image,StyleSheet, Text, TouchableOpacity,View,TouchableWithoutFeedback,Platform} from 'react-native';
 import {screen} from '../../common/index';
 import icon from '../../widget/IconFont';
-import {NavigationScreenProp as boolean} from '../../../node_modules/react-navigation/lib-rn/TypeDefinition';
+// import {NavigationScreenProp as boolean} from '../../../node_modules/react-navigation/lib-rn/TypeDefinition';
 
 type Props = {
     count : number;         // 显示的个数

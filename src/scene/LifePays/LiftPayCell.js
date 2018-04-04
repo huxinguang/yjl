@@ -5,7 +5,7 @@ import React, {PureComponent} from 'react';
 import {Image,StyleSheet, Text, TouchableOpacity,View,TouchableWithoutFeedback} from 'react-native';
 import {screen} from '../../common/index';
 import icon from '../../widget/IconFont';
-import {NavigationScreenProp as boolean} from '../../../node_modules/react-navigation/lib-rn/TypeDefinition';
+// import {NavigationScreenProp as boolean} from '../../../node_modules/react-navigation/lib-rn/TypeDefinition';
 import {SpacingView,color} from '../../widget/index';
 
 var defaultCellHeight = 40;
