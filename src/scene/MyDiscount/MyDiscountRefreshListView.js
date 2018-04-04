@@ -1,40 +1,37 @@
 /**
  * Created by kunpan on 2017/7/4.
  */
-import React, { PureComponent } from 'react';
-import { View, Text, StyleSheet, RefreshControl, ListView, ActivityIndicator, TouchableOpacity } from 'react-native';
+import React, {PureComponent} from 'react';
+import {View, Text, StyleSheet, RefreshControl, ListView, ActivityIndicator, TouchableOpacity} from 'react-native';
 import RefreshState from '../../widget/RefreshState';
 import PropTypes from 'prop-types';
 
-export default class MyDiscountRefreshListView extends PureComponent
-{
+export default class MyDiscountRefreshListView extends PureComponent {
     static propTypes = {
-        onHeadRefresh : PropTypes.func,
-        onFootGetMore : PropTypes.func,
+        onHeadRefresh: PropTypes.func,
+        onFootGetMore: PropTypes.func,
     };
 
     static defaultProps = {
         // getMore state 显示title
-        getMoreRefreshText : '数据加载中……',
-        getMoreFailText : '点击重新加载',
-        getMoreNoMoreText : '已加载全部数据',
+        getMoreRefreshText: '数据加载中……',
+        getMoreFailText: '点击重新加载',
+        getMoreNoMoreText: '已加载全部数据',
     };
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
 
         this.state = {
             // refresh、getMore state
-            isHeadRefreshState : RefreshState.Idle,
-            isFootRefreshState : RefreshState.Idle,
+            isHeadRefreshState: RefreshState.Idle,
+            isFootRefreshState: RefreshState.Idle,
         };
 
     }
 
     /*外部接口区*/
-    startHeadRefresh()
-    {
+    startHeadRefresh() {
         // 修改headState
         this.setState({
             isHeadRefreshState: RefreshState.Refreshing,
@@ -44,48 +41,40 @@ export default class MyDiscountRefreshListView extends PureComponent
         this.props.onHeadRefresh && this.props.onHeadRefresh();
     }
 
-    startFooterRefresh()
-    {
+    startFooterRefresh() {
         this.setState({
-            isFootRefreshState:RefreshState.Refreshing,
+            isFootRefreshState: RefreshState.Refreshing,
         });
 
         this.props.onFootGetMore && this.props.onFootGetMore();
     }
 
-    endRefresh(refreshState : RefreshState)
-    {
+    endRefresh(refreshState: RefreshState) {
         // 为了容错，当endRefresh传递.refreshing这return
-        if(refreshState === RefreshState.Refreshing)
-        {
+        if (refreshState === RefreshState.Refreshing) {
             return;
         }
 
         // 当为footer 这判断显示的state
         let footerState = refreshState;
-        if(this.props.dataSource.getRowCount() == 0)
-        {
+        if (this.props.dataSource.getRowCount() == 0) {
             footerState = RefreshState.Idle;
         }
 
         this.setState({
-            isHeadRefreshState : RefreshState.Idle,
-            isFootRefreshState : footerState,
+            isHeadRefreshState: RefreshState.Idle,
+            isFootRefreshState: footerState,
         });
     }
 
-    onHeadRefresh()
-    {
-        if(this.shouldStartHeadRefresh())
-        {
+    onHeadRefresh() {
+        if (this.shouldStartHeadRefresh()) {
             this.startHeadRefresh();
         }
     }
 
-    onFootGetMore()
-    {
-        if(this.shouldStartFootRefresh())
-        {
+    onFootGetMore() {
+        if (this.shouldStartFootRefresh()) {
             this.startFooterRefresh();
         }
     }
@@ -100,87 +89,81 @@ export default class MyDiscountRefreshListView extends PureComponent
 
 
     /*内部接口区*/
+
     // 判断当前状态能否刷新
-    shouldStartHeadRefresh()
-    {
-        if(this.state.isHeadRefreshState === RefreshState.Refreshing || this.state.isFootRefreshState === RefreshState.Refreshing)
-        {
+    shouldStartHeadRefresh() {
+        if (this.state.isHeadRefreshState === RefreshState.Refreshing || this.state.isFootRefreshState === RefreshState.Refreshing) {
             return false;
         }
         return true;
     }
 
-    shouldStartFootRefresh()
-    {
-        if(this.state.isHeadRefreshState === RefreshState.Refreshing || this.state.isFootRefreshState === RefreshState.Refreshing )
-        {
+    shouldStartFootRefresh() {
+        if (this.state.isHeadRefreshState === RefreshState.Refreshing || this.state.isFootRefreshState === RefreshState.Refreshing) {
             return false;
         }
 
-        if(this.state.isFootRefreshState === RefreshState.NoMoreData || this.state.isFootRefreshState === RefreshState.Failure)
-        {
+        if (this.state.isFootRefreshState === RefreshState.NoMoreData || this.state.isFootRefreshState === RefreshState.Failure) {
             return false;
         }
         return true;
     }
 
-    renderFooter()
-    {
+    renderFooter() {
         let footerView = null;
         switch (this.state.isFootRefreshState) {
-            case RefreshState.Idle : {
-                break;
-            }
-            case RefreshState.Failure : {
-                footerView =
+        case RefreshState.Idle : {
+            break;
+        }
+        case RefreshState.Failure : {
+            footerView =
                     <TouchableOpacity style={styles.footerContainer}
-                                      onPress={() => this.startFooterRefresh()}
+                        onPress={() => this.startFooterRefresh()}
                     >
                         <Text style={styles.footerText}>
                             {this.props.getMoreFailText}
                         </Text>
 
                     </TouchableOpacity>;
-                break;
-            }
+            break;
+        }
 
-            case  RefreshState.Refreshing : {
-                footerView =
-                    <TouchableOpacity style = {styles.footerContainer}
-                                      onPress = {() => this.startFooterRefresh()}
+        case  RefreshState.Refreshing : {
+            footerView =
+                    <TouchableOpacity style={styles.footerContainer}
+                        onPress={() => this.startFooterRefresh()}
                     >
-                        <ActivityIndicator size = "small" color= "#888888"/>
-                        <Text style = {styles.footerText}>
+                        <ActivityIndicator size="small" color="#888888"/>
+                        <Text style={styles.footerText}>
                             {this.props.getMoreRefreshText}
                         </Text>
-                    </TouchableOpacity>
-                break;
-            }
+                    </TouchableOpacity>;
+            break;
+        }
 
-            case RefreshState.NoMoreData :{
-                footerView =
-                    <View style = {styles.footerContainer}>
-                        <Text style = {styles.footerText}>
+        case RefreshState.NoMoreData : {
+            footerView =
+                    <View style={styles.footerContainer}>
+                        <Text style={styles.footerText}>
                             {this.props.getMoreNoMoreText}
                         </Text>
 
-                    </View>
-                break;
-            }
+                    </View>;
+            break;
+        }
         }
 
         return footerView;
     }
 
     /*试图渲染*/
-    render()
-    {
-        return(
+    render() {
+        return (
             <ListView
                 // 包含该对象中外面所有声明的props
                 {...this.props}
                 enableEmptySections
-                refreshControl = {
+                refreshControl={
                     <RefreshControl
                         refreshing={this.state.isHeadRefreshState == RefreshState.Refreshing}
                         onRefresh={() => this.onHeadRefresh()}

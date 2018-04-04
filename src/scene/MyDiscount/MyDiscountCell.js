@@ -43,10 +43,10 @@ export default class MyDiscountCell extends PureComponent
         let imageUrl = this.props.info.imageUrl.replace('w.h', '160.0');
         return(
             <TouchableOpacity style = {styles.container}
-                              onPress = {() => this.props.onPress()}
+                onPress = {() => this.props.onPress()}
             >
                 {/*<Image style={[styles.icon,{backgroundColor : 'black'}]} source={{uri : imageUrl}}>*/}
-                    {/*{this.renderCell(this.props.cellType,imageUrl)}*/}
+                {/*{this.renderCell(this.props.cellType,imageUrl)}*/}
                 {/*</Image>*/}
                 {this.renderCell(this.props.cellType,imageUrl)}
 
@@ -71,15 +71,15 @@ export default class MyDiscountCell extends PureComponent
         if(type === 1)      // 代金券
         {
             // cellView = <Image style={[styles.logoIcon,{backgroundColor : '#FE566D'}]} />
-            cellView = <Image style={[styles.icon,{backgroundColor : 'white'}]} source={(this.props.currentIndex === 0 ? ValidImageUrl[arrayIndex] : UnValidImageUrl[arrayIndex])}/>
+            cellView = <Image style={[styles.icon,{backgroundColor : 'white'}]} source={(this.props.currentIndex === 0 ? ValidImageUrl[arrayIndex] : UnValidImageUrl[arrayIndex])}/>;
         }else if(type === 2)    /// 打折券
         {
             // cellView =  <Image style={[styles.logoIcon,{backgroundColor : 'blue'}]} />
-            cellView = <Image style={[styles.icon,{backgroundColor : 'white'}]} source={(this.props.currentIndex === 0 ? ValidImageUrl[arrayIndex] : UnValidImageUrl[arrayIndex])}/>
+            cellView = <Image style={[styles.icon,{backgroundColor : 'white'}]} source={(this.props.currentIndex === 0 ? ValidImageUrl[arrayIndex] : UnValidImageUrl[arrayIndex])}/>;
         }else if(type === 3)   /// 换购券
         {
             // cellView = <Image style={[styles.logoIcon,{backgroundColor : '#e4e4e4'}]} />
-            cellView = <Image style={[styles.icon,{backgroundColor : 'white'}]} source={(this.props.currentIndex === 0 ? ValidImageUrl[arrayIndex] : UnValidImageUrl[arrayIndex])}/>
+            cellView = <Image style={[styles.icon,{backgroundColor : 'white'}]} source={(this.props.currentIndex === 0 ? ValidImageUrl[arrayIndex] : UnValidImageUrl[arrayIndex])}/>;
         }
         return cellView;
     }
