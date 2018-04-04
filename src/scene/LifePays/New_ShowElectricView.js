@@ -8,6 +8,7 @@ import {StyleSheet,
     TouchableWithoutFeedback,
     ActivityIndicator
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 let titleTopMarger = 10;
 let defaultCellLeftMarge = 10;
@@ -16,9 +17,9 @@ let defaultTimer = 5000;
 export default class New_ShowElectricView extends PureComponent
 {
     static propTypes = {
-        onSelectElectBtnClick : React.PropTypes.func,
-        remainNumber : React.PropTypes.number,
-        updateTime : React.PropTypes.string,
+        onSelectElectBtnClick : PropTypes.func,
+        remainNumber : PropTypes.number,
+        updateTime : PropTypes.string,
     };
 
     static defaultProps = {

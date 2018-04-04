@@ -5,6 +5,7 @@ import React, {PureComponent} from 'react';
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {GlobalTitle} from '../../Global';
 import ImageAndTitleCell from './ImageAndTitleCell';
+import PropTypes from 'prop-types';
 
 let margerTopHeight = 20;
 let paddingLeftRight = 20;
@@ -20,7 +21,7 @@ export default class New_LiftPayScene extends PureComponent {
     });
 
     static propTypes = {
-        navigation: React.PropTypes.object
+        navigation: PropTypes.object
     };
 
     render() {

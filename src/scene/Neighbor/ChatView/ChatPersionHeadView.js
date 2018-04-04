@@ -6,6 +6,7 @@ import {StyleSheet, TouchableWithoutFeedback, View,Text,Image} from 'react-nativ
 import {color} from '../../../widget';
 import {screen} from '../../../common';
 import ImageCarousel from 'react-native-image-carousel';
+import PropTypes from 'prop-types';
 
 // 图像宽高
 let headImageSize = 40;
@@ -16,10 +17,10 @@ let subViewTopMarger = 10;
 let timeTopMarger = 10;
 
 type Props = {
-    headUrlStr : React.PropTypes.string,
-    userNameStr : React.PropTypes.string,
-    publicTimeStr : React.PropTypes.string,
-    type : React.PropTypes.string,
+    headUrlStr : PropTypes.string,
+    userNameStr : PropTypes.string,
+    publicTimeStr : PropTypes.string,
+    type : PropTypes.string,
 };
 
 export default class ChatPersionHeadView extends PureComponent

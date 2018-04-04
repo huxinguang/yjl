@@ -13,19 +13,20 @@ import {
 
 import BaseFloatView from './BaseFloatView';
 import {screen} from '../../common/index';
+import PropTypes from 'prop-types';
 
 let defaultItemHeight = 30;
 let defaultTitleHeight = 40;
 
 type Props = {
-    dataArray : React.PropTypes.array,      /// < 显示选择address的数据源
-    titleString : React.PropTypes.string,   /// < 显示的title string
+    dataArray : PropTypes.array,      /// < 显示选择address的数据源
+    titleString : PropTypes.string,   /// < 显示的title string
 
-    subViewPadding : React.PropTypes.number,    /// <  默认的子试图距离left、rightmarge边距
-    borderRadius : React.PropTypes.number,      /// < 是否圆角
-    subViewLeftMarger : React.PropTypes.number, /// < 显示的text 距离左边剧多远 default 10
+    subViewPadding : PropTypes.number,    /// <  默认的子试图距离left、rightmarge边距
+    borderRadius : PropTypes.number,      /// < 是否圆角
+    subViewLeftMarger : PropTypes.number, /// < 显示的text 距离左边剧多远 default 10
 
-    didSelectClickMaskView : React.PropTypes.func,  /// < 点击mask事件
+    didSelectClickMaskView : PropTypes.func,  /// < 点击mask事件
     didSelectItemView?:(index : number) => void,    /// < 点击item
 };
 

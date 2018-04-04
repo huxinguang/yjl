@@ -6,6 +6,7 @@ import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Heading1, Paragraph} from '../../widget/Text';
 import {screen} from '../../common';
 import {color} from '../../widget';
+import PropTypes from 'prop-types';
 
 // 0: 代金券 1：打折券 2： 换购券
 let UnValidImageUrl = [require('../../img/daijinquan1.png'),require('../../img/dazhequan1.png'),require('../../img/huangouquan1.png')];
@@ -16,10 +17,10 @@ let ValidImageUrl = [require('../../img/home_daijinquan.png'),require('../../img
 export default class MyDiscountCell extends PureComponent
 {
     static propTypes = {
-        info : React.PropTypes.object,
-        onPress : React.PropTypes.func,
-        cellType : React.PropTypes.number,      /// < type : 1 代金券 type : 2 打折券 type : 3 换购券
-        currentIndex : React.PropTypes.number,  /// < currentIndex <= 1  优惠券未为使用  else 这使用
+        info : PropTypes.object,
+        onPress : PropTypes.func,
+        cellType : PropTypes.number,      /// < type : 1 代金券 type : 2 打折券 type : 3 换购券
+        currentIndex : PropTypes.number,  /// < currentIndex <= 1  优惠券未为使用  else 这使用
     };
 
     static defaultProps = {

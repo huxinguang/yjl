@@ -16,6 +16,7 @@ import {
 
 import TimerMixin from 'react-timer-mixin';
 import BaseFloatView from './BaseFloatView';
+import PropTypes from 'prop-types';
 
 const {width, height} = Dimensions.get('window');
 const navigatorH = 64; // navigator height
@@ -104,7 +105,7 @@ export default class Alert extends Component {
     parent ={};
 
     static propTypes = {
-        obj : React.PropTypes.object,
+        obj : PropTypes.object,
     };
 
     constructor(props) {

@@ -12,9 +12,9 @@ let titleTopMarger = 10;
 
 export default class ImageAndTitleCell extends PureComponent {
     static propTypes = {
-        // height : React.PropTypes.number,    ///< default view height
-        // iconStyle : React.PropTypes.any,
-        source: PropTypes.string,       ///< right icon source React.PropTypes.number,
+        // height : PropTypes.number,    ///< default view height
+        // iconStyle : PropTypes.any,
+        source: PropTypes.string,       ///< right icon source PropTypes.number,
 
         titleString: PropTypes.string,
 

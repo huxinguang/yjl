@@ -4,13 +4,13 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Paragraph} from '../../widget/Text';
 import {screen} from '../../common';
 import {color} from '../../widget';
-
+import PropTypes from 'prop-types';
 // create a component
 class NearbyHeaderView extends PureComponent {
     static propTypes = {
-        selectedIndex : React.PropTypes.number,
-        onSelected   : React.PropTypes.func,
-        titles : React.PropTypes.array,
+        selectedIndex : PropTypes.number,
+        onSelected   : PropTypes.func,
+        titles : PropTypes.array,
     };
 
     static defaultProps = {

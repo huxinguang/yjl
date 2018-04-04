@@ -9,14 +9,15 @@ import ChatListContentView from './ChatListContentView';
 import ChatPersionHeadView from './ChatPersionHeadView';
 import ChatWBToolsView from './ChatWBToolsView';
 import SpacingView from '../../../widget/SpacingView';
+import PropTypes from 'prop-types';
 
 export default class ChatWBContentView extends PureComponent
 {
     static propTypes = {
-        info : React.PropTypes.object,
-        didSelectContentView : React.PropTypes.func,
-        isChatDetail : React.PropTypes.bool,     /// < default false
-        isShowToolsBarView : React.PropTypes.bool,  /// < 是否显示底部的toolsBar default : true
+        info : PropTypes.object,
+        didSelectContentView : PropTypes.func,
+        isChatDetail : PropTypes.bool,     /// < default false
+        isShowToolsBarView : PropTypes.bool,  /// < 是否显示底部的toolsBar default : true
     };
 
     static defaultProps = {

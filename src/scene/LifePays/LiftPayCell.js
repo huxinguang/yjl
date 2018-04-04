@@ -7,6 +7,7 @@ import {screen} from '../../common/index';
 import icon from '../../widget/IconFont';
 // import {NavigationScreenProp as boolean} from '../../../node_modules/react-navigation/lib-rn/TypeDefinition';
 import {SpacingView,color} from '../../widget/index';
+import PropTypes from 'prop-types';
 
 var defaultCellHeight = 40;
 var defaultCellLeftMarge = 10;
@@ -14,11 +15,11 @@ var defaultCellItemTopmarger = 5;
 
 type Props = {
     didSelectCellItem?: (cellType : number,isSelect : boolean,payId : number) => void;
-    cellType : React.PropTypes.number,      // 0 表示代缴费 1.表示缴费记录
-    titleString : React.PropTypes.string,
-    timeString : React.PropTypes.string,
-    payTimeString : React.PropTypes.string, // 这个可以选填的 isRequire
-    id : React.PropTypes.number,
+    cellType : PropTypes.number,      // 0 表示代缴费 1.表示缴费记录
+    titleString : PropTypes.string,
+    timeString : PropTypes.string,
+    payTimeString : PropTypes.string, // 这个可以选填的 isRequire
+    id : PropTypes.number,
 };
 
 export default class LiftPayCell extends PureComponent

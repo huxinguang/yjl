@@ -4,12 +4,13 @@
 import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet, RefreshControl, ListView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import RefreshState from '../../widget/RefreshState';
+import PropTypes from 'prop-types';
 
 export default class MyDiscountRefreshListView extends PureComponent
 {
     static propTypes = {
-        onHeadRefresh : React.PropTypes.func,
-        onFootGetMore : React.PropTypes.func,
+        onHeadRefresh : PropTypes.func,
+        onFootGetMore : PropTypes.func,
     };
 
     static defaultProps = {

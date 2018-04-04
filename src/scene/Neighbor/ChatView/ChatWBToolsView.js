@@ -8,20 +8,21 @@ import {screen} from '../../../common';
 import {get,utf16toEntities,HTMLDecode,CStr,HOST} from '../../../api';
 import {GlobalValue} from '../../../Global';
 import {Heading1, Paragraph} from '../../../widget/Text';
+import PropTypes from 'prop-types';
 
 import ChatWBToolsBarItemView from './ChatWBToolsBarItemView';
 
 // type Props = {
-//     itemType : React.PropTypes.number,      /// < 进来的类型是那个  0 : 点赞 1: 表示回复 default : 0
-//     isLikeSelect : React.PropTypes.boolean, /// < 是否点赞被点击   (note： 前提itemType = 0)
-//     showTotalNumber : React.PropTypes.number,   /// < 显示的个数
+//     itemType : PropTypes.number,      /// < 进来的类型是那个  0 : 点赞 1: 表示回复 default : 0
+//     isLikeSelect : PropTypes.boolean, /// < 是否点赞被点击   (note： 前提itemType = 0)
+//     showTotalNumber : PropTypes.number,   /// < 显示的个数
 //     didSelectToolsBarItem?: (itemType : number) => void;  /// < 点击 toolBarItem
 // };
 
 let paddingMarger = 10;
 
 type Props = {
-    isLikeSelect : React.PropTypes.boolean, /// < 是否点赞被点击   (note： 前提itemType = 0)
+    isLikeSelect : PropTypes.boolean, /// < 是否点赞被点击   (note： 前提itemType = 0)
     didSelectToolsBarItem?: (itemType : number) => void;  /// < 点击 toolBarItem
 };
 

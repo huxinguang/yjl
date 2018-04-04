@@ -17,9 +17,9 @@ type Props = {
 export default class LifePaySegmentView extends PureComponent
 {
     // static propType = {
-    //     oneSegmentString : React.PropTypes.string,
-    //     twoSegmentString : React.PropTypes.string,
-    //     onSelectedIndexChange : React.PropTypes.func.isRequired,
+    //     oneSegmentString : PropTypes.string,
+    //     twoSegmentString : PropTypes.string,
+    //     onSelectedIndexChange : PropTypes.func.isRequired,
     // }
     props : Props;
 

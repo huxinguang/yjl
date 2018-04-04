@@ -6,11 +6,12 @@ import {StyleSheet, View} from 'react-native';
 import {color} from '../../widget';
 import LifeHotShopItem from './LifeHotShopItem';
 import {screen} from '../../common';
+import PropTypes from 'prop-types';
 
 export default class LifeHotShopView extends PureComponent {
     static propTypes = {
-        infos : React.PropTypes.array,
-        onGridSelected : React.PropTypes.func,
+        infos : PropTypes.array,
+        onGridSelected : PropTypes.func,
     };
 
     static  defaulrProps = {

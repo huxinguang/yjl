@@ -8,6 +8,7 @@ import {RefreshState} from '../../widget';
 import MyDiscountRefreshListView from './MyDiscountRefreshListView';
 import {get} from '../../api';
 import MyDiscountCell from './MyDiscountCell';
+import PropTypes from 'prop-types';
 
 /*
  该类是显示contentView 显示list、发送网络请求
@@ -16,7 +17,7 @@ import MyDiscountCell from './MyDiscountCell';
 export default class MyDiscountListScene extends PureComponent {
 
     static propTypes = {
-        currentIndex: React.PropTypes.number,
+        currentIndex: PropTypes.number,
     };
 
     listView: MyDiscountRefreshListView;

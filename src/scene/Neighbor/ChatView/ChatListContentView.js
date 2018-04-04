@@ -10,6 +10,7 @@ import {GlobalValue} from '../../../Global';
 import {Heading1, Paragraph} from '../../../widget/Text';
 var emoji = require('node-emoji');
 import ImageCarousel from 'react-native-image-carousel';
+import PropTypes from 'prop-types';
 
 // 左边距
 let leftMarger   = 10;
@@ -24,9 +25,9 @@ let imagePaddingSpace = 15;
 
 type Props = {
     // 数据源
-    info : React.PropTypes.object,
+    info : PropTypes.object,
     // 是否可以点击图片查看大图页
-    isShowBigImage : React.PropTypes.boolean,   /// < default false
+    isShowBigImage : PropTypes.boolean,   /// < default false
 };
 
 export default class ChatListContentView extends PureComponent

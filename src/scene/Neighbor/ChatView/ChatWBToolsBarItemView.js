@@ -4,11 +4,12 @@
 import React, {PureComponent} from 'react';
 import {StyleSheet, View,Text} from 'react-native';
 import icon from '../../../widget/IconFont';
+import PropTypes from 'prop-types';
 
 type Props = {
-    itemType : React.PropTypes.number,      /// < 进来的类型是那个  0 : 点赞 1: 表示回复 default : 0
-    isLikeSelect : React.PropTypes.boolean, /// < 是否点赞被点击   (note： 前提itemType = 0)
-    showTotalNumber : React.PropTypes.number,   /// < 显示的个数
+    itemType : PropTypes.number,      /// < 进来的类型是那个  0 : 点赞 1: 表示回复 default : 0
+    isLikeSelect : PropTypes.boolean, /// < 是否点赞被点击   (note： 前提itemType = 0)
+    showTotalNumber : PropTypes.number,   /// < 显示的个数
     didSelectToolsBarItem?: (itemType : number) => void;  /// < 点击 toolBarItem
 };
 
