@@ -19,7 +19,7 @@ import {GlobalValue} from '../../Global';
 import {get, post} from '../../api';
 import {filterEmoji, trimAllSpace} from '../../common/tool';
 import ActionSheet from 'react-native-actionsheet';
-import {Loading,EasyLoading} from 'react-native-easy-loading';
+// import {Loading,EasyLoading} from 'react-native-easy-loading';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 
 
@@ -142,7 +142,7 @@ class AddComplaintScene extends PureComponent {
 
                 <Toast ref={(t) => this.toast = t}
                     position='center'/>
-                <Loading type={'type'} loadingStyle={{ backgroundColor: '#f007' }} />
+                {/*<Loading type={'type'} loadingStyle={{ backgroundColor: '#f007' }} />*/}
             </View>
         );
     }
@@ -241,7 +241,7 @@ class AddComplaintScene extends PureComponent {
             return;
         }
 
-        EasyLoading.show('Loading...', 3000, 'type');
+        // EasyLoading.show('Loading...', 3000, 'type');
 
         let _this = this;
         var paramMap = {
@@ -267,7 +267,7 @@ class AddComplaintScene extends PureComponent {
 
         post(paramMap, function (data) {
             if (data.code === 0){
-                EasyLoading.dismis('投诉成功');
+                // EasyLoading.dismis('投诉成功');
                 DeviceEventEmitter.emit('AddComplaintSuccess');
                 _this.props.navigation.goBack();
             }else {
