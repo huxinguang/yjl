@@ -100,7 +100,7 @@ android {
     targetSdkVersion 22
     versionCode 1
     versionName "2.0.2"
-    vectorDrawables.useSupportLibrary true
+    vectorDrawables.useSupportLibrary  true
     ndk {
       abiFilters "armeabi-v7a", "x86"
     }
