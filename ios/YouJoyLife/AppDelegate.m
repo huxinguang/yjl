@@ -44,7 +44,10 @@ static NSString * const APP_IS_FIRST_LAUNCH = @"AppIsFirstLaunch";
                                                    launchOptions:launchOptions];
   self.rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
   
+  NSLog(@"*******************************%f,%f",[UIScreen mainScreen].bounds.size.height,[UIScreen mainScreen].bounds.size.width);
+  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  
   if ([[NSUserDefaults standardUserDefaults] objectForKey:APP_IS_FIRST_LAUNCH] == nil) {
     GuideViewController *guideVC = [[GuideViewController alloc]init];
     guideVC.delegate = self;

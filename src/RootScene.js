@@ -3,7 +3,7 @@
  */
 //import liraries
 import React, {PureComponent} from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar, SafeAreaView} from 'react-native';
 import {StackNavigator, TabBarBottom, TabNavigator} from 'react-navigation';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
 
@@ -261,7 +261,7 @@ const Navigator = StackNavigator(
         FixDetailScene: {screen: FixDetailScene},
         ComplaintDetailScene: {screen: ComplaintDetailScene},
         ServiceDetailScene: {screen: ServiceDetailScene},
-        ChatDetailScene : {screen : ChatDetailScene},
+        ChatDetailScene: {screen: ChatDetailScene},
     },
     {
         navigationOptions: {

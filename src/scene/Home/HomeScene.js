@@ -1,6 +1,6 @@
 //import liraries
 import React, {PureComponent} from 'react';
-import {FlatList, Image, Linking, StatusBar, StyleSheet, Text, ToastAndroid, TouchableOpacity, View,Alert,NativeAppEventEmitter,TouchableHighlight,ScrollView} from 'react-native';
+import {FlatList, Image, Linking, StatusBar, StyleSheet, Text, ToastAndroid, TouchableOpacity, View,Alert,NativeAppEventEmitter,TouchableHighlight,ScrollView,SafeAreaView} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
@@ -461,6 +461,7 @@ class HomeScene extends PureComponent {
 
     render() {
         return (
+
             <View style={styles.container}>
                 <FlatList
                     data={this.state.dataList}
