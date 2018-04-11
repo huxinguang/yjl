@@ -15,6 +15,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <RCTSplashScreen/RCTSplashScreen.h>
 
 static NSString * const APP_IS_FIRST_LAUNCH = @"AppIsFirstLaunch";
 
@@ -43,6 +44,7 @@ static NSString * const APP_IS_FIRST_LAUNCH = @"AppIsFirstLaunch";
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
   self.rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+  [RCTSplashScreen show:self.rootView];
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   
   if ([[NSUserDefaults standardUserDefaults] objectForKey:APP_IS_FIRST_LAUNCH] == nil) {

@@ -2,6 +2,7 @@ package com.skyocean.youjoylife;
 
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+import com.mehcode.reactnative.splashscreen.SplashScreenPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.facebook.react.ReactNativeHost;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
+            new SplashScreenPackage(),
               new RNDeviceInfo(),
               new PickerPackage(),
               new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG)

@@ -167,6 +167,7 @@ android {
 }
 
 dependencies {
+    compile project(':rn-splash-screen')
     compile project(':react-native-image-crop-picker')
     compile project(':react-native-device-info')
   compile project(':react-native-device-info')

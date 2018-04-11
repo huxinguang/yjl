@@ -5,8 +5,8 @@ import RootScene from './RootScene';
 
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
-import {StyleSheet} from 'react-native';
-
+import SplashScreen from 'rn-splash-screen';
+import system from './common/system';
 
 class App extends React.Component {
     state: {
@@ -20,6 +20,13 @@ class App extends React.Component {
             isLoading: true,
             store: configureStore(() => this.setState({isLoading: false})),
         };
+    }
+
+    componentDidMount(){
+        //隐藏闪屏页,闪屏页用的是第三方库，rn-splash-screen
+        setTimeout(() => {
+            SplashScreen.hide();
+        }, 2000);
     }
 
     render() {
