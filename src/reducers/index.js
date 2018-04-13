@@ -3,5 +3,5 @@
 let {combineReducers} = require('redux');
 
 module.exports = combineReducers({
-    user: require('./user'),
+    user: require('./loginout'),
 });

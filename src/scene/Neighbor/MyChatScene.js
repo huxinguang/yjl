@@ -58,7 +58,7 @@ class MyChatScene extends PureComponent {
                 this.requestParticipantData();
                 this.requestPublishData();
             } else {
-                this.props.navigation.navigate('Login', {});
+                this.props.navigation.navigate('LoginScene', {});
             }
         }
     }

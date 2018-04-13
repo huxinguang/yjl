@@ -100,7 +100,7 @@ class PropertyService extends PureComponent {
                 this.requestPerson();
                 this.requestPubic();
             } else {
-                this.props.navigation.navigate('Login', {});
+                this.props.navigation.navigate('LoginScene', {});
             }
         }
     }

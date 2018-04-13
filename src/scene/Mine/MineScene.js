@@ -7,7 +7,8 @@ import screen from '../../common/screen';
 import {color, DetailCell, SpacingView} from '../../widget';
 import {GlobalValue} from '../../Global';
 import {get, HOST} from '../../api';
-
+import {loggedOut} from '../../actions/actions';
+import PropTypes from 'prop-types';
 
 // create a component
 class MineScene extends PureComponent {
@@ -60,7 +61,7 @@ class MineScene extends PureComponent {
             if (nextProps.isLoggedIn) {
                 this.onHeaderRefresh();
             } else {
-                this.props.navigation.navigate('Login', {});
+                this.props.navigation.navigate('LoginScene', {});
             }
         }
     }
@@ -139,7 +140,7 @@ class MineScene extends PureComponent {
 
     render() {
         let logoutBtn = this.props.isLoggedIn &&
-            <TouchableOpacity style={styles.logout} onPress={() => this.logout()}>
+            <TouchableOpacity style={styles.logout} onPress={() => {this.logout && this.logout()}}>
                 <Text style={{color: 'white', fontSize: 14}}>退出登录</Text>
             </TouchableOpacity>;
         return (
@@ -192,7 +193,7 @@ class MineScene extends PureComponent {
 
     isLogin() {
         if (!this.props.isLoggedIn) {
-            this.props.navigation.navigate('Login', {});
+            this.props.navigation.navigate('LoginScene', {});
             return false;
         }
         return true;
@@ -239,7 +240,7 @@ class MineScene extends PureComponent {
 
     logout() {
         this.setState({userInfo: this.defaultUserInfo});
-        this.props.dispatch({type: 'LOGGED_OUT'});
+        this.props.dispatch(loggedOut());
         this.props.navigation.navigate('Home', {});
     }
 
@@ -283,4 +284,5 @@ function select(store) {
 }
 
 //make this component available to the app
-export default connect(select)(MineScene);
+// export default connect(select)(MineScene);
+module.exports = connect(select)(MineScene);

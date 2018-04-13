@@ -14,7 +14,7 @@ import PropertyScene from './scene/Property/PropertyScene';
 import NearbyScene from './scene/LifeCircle/LifeCircleScene';
 import NeighborScene from './scene/Neighbor/NeighborScene';
 import MineScene from './scene/Mine/MineScene';
-import Login from './scene/Account/Login';
+import LoginScene from './scene/Account/LoginScene';
 import ChangePassword from './scene/Account/ChangePassword';
 import AreaSelection from './scene/Account/AreaSelection';
 import PropertyService from './scene/Property/PropertyService';
@@ -275,7 +275,7 @@ const Navigator = StackNavigator(
     {
         Tab: {screen: Tab},
         Home: {screen: HomeScene},
-        Login: {screen: Login},
+        LoginScene: {screen: LoginScene},
         ChangePassword: {screen: ChangePassword},
         AreaSelection: {screen: AreaSelection},
         Web: {screen: WebScene},

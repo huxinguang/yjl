@@ -44,7 +44,7 @@ class MyDiscountScene extends PureComponent {
             if (nextProps.isLoggedIn) {
                 this.forceUpdate();
             } else {
-                this.props.navigation.navigate('Login', {});
+                this.props.navigation.navigate('LoginScene', {});
             }
         }
     }

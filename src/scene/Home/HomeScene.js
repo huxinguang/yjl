@@ -444,7 +444,7 @@ class HomeScene extends PureComponent {
         let scenes = ['PropertyService', 'NewLifePayScene', 'PaidService', 'ExpressListScene', '', '', 'MyDiscount', 'PhoneBook'];
         if (scenes[index] !== '') {
             if (!this.props.isLoggedIn) {
-                this.props.navigation.navigate('Login', {});
+                this.props.navigation.navigate('LoginScene', {});
                 return;
             }
             this.props.navigation.navigate(scenes[index], {});

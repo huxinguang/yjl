@@ -57,7 +57,7 @@ class ChatScene extends PureComponent {
             if (nextProps.isLoggedIn) {
                 this.requestData();
             } else {
-                this.props.navigation.navigate('Login', {});
+                this.props.navigation.navigate('LoginScene', {});
             }
         }
     }

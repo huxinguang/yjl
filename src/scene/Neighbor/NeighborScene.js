@@ -129,7 +129,7 @@ class NeighborScene extends Component {
 
     onPressButton(moduleName: string) {
         if (!this.props.isLoggedIn) {
-            this.props.navigation.navigate('Login', {});
+            this.props.navigation.navigate('LoginScene', {});
             return;
         } else if (GlobalValue.userInfo.attestation === 0) {
             alert('还未认证！');
