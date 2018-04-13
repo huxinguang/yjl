@@ -7,7 +7,7 @@ import screen from '../../common/screen';
 import {color, DetailCell, SpacingView} from '../../widget';
 import {GlobalValue} from '../../Global';
 import {get, HOST} from '../../api';
-import {loggedOut} from '../../actions/actions';
+import {logout} from '../../actions/actions';
 import PropTypes from 'prop-types';
 
 // create a component
@@ -140,7 +140,7 @@ class MineScene extends PureComponent {
 
     render() {
         let logoutBtn = this.props.isLoggedIn &&
-            <TouchableOpacity style={styles.logout} onPress={() => {this.logout && this.logout()}}>
+            <TouchableOpacity style={styles.logout} onPress={() => {this.logoutAction && this.logoutAction()}}>
                 <Text style={{color: 'white', fontSize: 14}}>退出登录</Text>
             </TouchableOpacity>;
         return (
@@ -238,9 +238,9 @@ class MineScene extends PureComponent {
         }
     }
 
-    logout() {
+    logoutAction() {
         this.setState({userInfo: this.defaultUserInfo});
-        this.props.dispatch(loggedOut());
+        this.props.dispatch(logout());
         this.props.navigation.navigate('Home', {});
     }
 

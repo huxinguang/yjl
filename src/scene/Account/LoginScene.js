@@ -10,7 +10,7 @@ import {CheckBox, color, EditText, icon} from '../../widget/';
 import {get} from '../../api';
 import StorageUtil from '../../common/StorageUtil';
 import {GlobalKey, GlobalValue} from '../../Global';
-import {loggedIn} from '../../actions/actions';
+import {login} from '../../actions/actions';
 
 class LoginScene extends PureComponent {
 
@@ -172,7 +172,7 @@ class LoginScene extends PureComponent {
             // };
 
             //为什么要这样写 => in a connected component you usually don’t have access to the store itself, but get either dispatch() or specific action creators injected as props
-            _this.props.dispatch(loggedIn({id: userInfo.uid, name: _this.username}));
+            _this.props.dispatch(login({id: userInfo.uid, name: _this.username}));
 
             const backAction = NavigationActions.back({
                 // key: 'Login'
