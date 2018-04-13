@@ -50,15 +50,7 @@ function user(state: State = initialState, action: Action) : State {
     if (action.type === 'LOGGED_OUT') {
         return initialState;
     }
-    if (action.type === 'SET_SHARING') {
-        return {
-            ...state,
-            sharedSchedule: action.enabled,
-        };
-    }
-    if (action.type === 'RESET_NUXES') {
-        return {...state, sharedSchedule: null};
-    }
+
     return state;
 }
 

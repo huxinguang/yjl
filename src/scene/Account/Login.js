@@ -296,7 +296,6 @@ const styles = StyleSheet.create({
     }
 });
 
-// export default Login;
 //connect函数是由react-redux提供的。使用它可以包装普通的展示组件，然后返回一个容器组件。
 //connect它是一个柯里化函数，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）
 module.exports = connect()(Login);
