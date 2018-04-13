@@ -28,7 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
-            new SplashScreenPackage(),
+              new SplashScreenPackage(),
               new RNDeviceInfo(),
               new PickerPackage(),
               new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG)

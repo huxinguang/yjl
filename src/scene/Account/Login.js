@@ -161,15 +161,17 @@ class Login extends PureComponent {
             GlobalValue.block = block_info.tag;
             GlobalValue.blockId = block_info.id;
 
+            //redux中action的type参数（固定参数，必须有）用于标识需要被执行的action的类型以便reducers识别，type通常为一个字符串常量。参见https://redux.js.org/basics/actions
             const action = {
                 type: 'LOGGED_IN',
-                data: {
+                payload: {
                     id: userInfo.uid,
                     name: _this.username,
                     sharedSchedule: 0,
                 },
             };
 
+            //为什么要这样写 => in a connected component you usually don’t have access to the store itself, but get either dispatch() or specific action creators injected as props
             _this.props.dispatch(action);
 
             const backAction = NavigationActions.back({
@@ -295,4 +297,6 @@ const styles = StyleSheet.create({
 });
 
 // export default Login;
+//connect函数是由react-redux提供的。使用它可以包装普通的展示组件，然后返回一个容器组件。
+//connect它是一个柯里化函数，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）
 module.exports = connect()(Login);

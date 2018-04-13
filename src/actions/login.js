@@ -46,7 +46,7 @@ async function _logInWithFacebook(source: ?string): Promise<Array<Action>> {
     const action = {
         type: 'LOGGED_IN',
         source,
-        data: {
+        payload: {
             id: profile.id,
             name: profile.name,
             sharedSchedule: user.get('sharedSchedule'),

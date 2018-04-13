@@ -35,6 +35,10 @@ class App extends React.Component {
         }
         global.store = this.state.store;
         return (
+            /*
+            * Provider是一个react-redux的一个组件，可以作为顶层app的分发点,它只需要store属性就可以了。
+            * 它会将state分发给所有被connect的组件（不管它在哪里，被嵌套多少层），思想是：顶层分发状态，让React组件被动地渲染
+            * */
             <Provider store={this.state.store}>
                 <RootScene/>
             </Provider>

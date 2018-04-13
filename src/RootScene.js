@@ -6,36 +6,29 @@ import React, {PureComponent} from 'react';
 import {StatusBar} from 'react-native';
 import {StackNavigator, TabBarBottom, TabNavigator} from 'react-navigation';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
-
 import color from './widget/color';
 import TabBarIconFontItem from './widget/TabBarIconFontItem';
 import StorageUtil from './common/StorageUtil';
-
 import HomeScene from './scene/Home/HomeScene';
 import PropertyScene from './scene/Property/PropertyScene';
 import NearbyScene from './scene/LifeCircle/LifeCircleScene';
-// import NearbyScene from './scene/Nearby/NearbyScene';
 import NeighborScene from './scene/Neighbor/NeighborScene';
 import MineScene from './scene/Mine/MineScene';
 import Login from './scene/Account/Login';
 import ChangePassword from './scene/Account/ChangePassword';
 import AreaSelection from './scene/Account/AreaSelection';
-
 import PropertyService from './scene/Property/PropertyService';
 import PhoneBook from './scene/Neighbor/PhoneBook';
 import ExpressListScene from './scene/Property/ExpressListScene';
 import NoticeListScene from './scene/Property/NoticeListScene';
 import NoticeDetailScene from './scene/Property/NoticeDetailScene';
-/*注册push界面*/
 import WebScene from './widget/WebScene';
 import GroupPurchaseScene from './scene/GroupPurchase/GroupPurchaseScene';
 import Authentication from './scene/Mine/Authentication';
 import MyDiscountScene from './scene/MyDiscount/MyDiscountScene';
-// import NewLifePayScene from './scene/LifePay/NewLifePayScene';
 import NewLifePayScene from './scene/LifePays/NewLifePays';
 import ChooseRoomScene from './scene/Mine/ChooseRoomScene';
 import AddFixScene from './scene/Property/AddFixScene';
-// 注册使用BaseActionSheet界面
 import TestActionSheetScene from './scene/LifePays/NewLifePay_ActionSheet';
 import ComplaintsList from './scene/Property/ComplaintsList';
 import PaidService from './scene/Property/PaidService';
@@ -67,8 +60,9 @@ import ScoreScene from './scene/Property/ScoreScene';
 import FixDetailScene from './scene/Property/FixDetailScene';
 import ComplaintDetailScene from './scene/Property/ComplaintDetailScene';
 import ServiceDetailScene from './scene/Property/ServiceDetailScene';
-
 import ChatDetailScene from './scene/Neighbor/ChatDetailScene';
+import system from './common/system';
+import GuideViewPager from './GuideViewPager';
 
 const lightContentScenes = ['Home', 'Mine'];
 
@@ -86,6 +80,13 @@ function getCurrentRouteName(navigationState) {
 
 // create a component
 class RootScene extends PureComponent {
+
+    isFisrtLaunch: boolean;
+
+    state:{
+        hideGuide:boolean
+    };
+
     constructor() {
         super();
 
@@ -94,12 +95,63 @@ class RootScene extends PureComponent {
         // 初始化storage 并设置全局变量
         // global为系统自带，使用时无需import任何内容
         global.storage = StorageUtil.shareStroageUtilInstan();
+
+        this.loadStorage();
+
+
     }
+
+    getLaunchInfoFromStorage (){
+        let _this = this;
+        return new Promise ((resolve,reject) =>{
+            StorageUtil.selectObject('AppIsFirstLaunch', function (data) {
+                if (data) {
+                    _this.isFisrtLaunch = data['AppIsFirstLaunch'];
+                }else {
+                    _this.isFisrtLaunch = true;
+                }
+            });
+        });
+
+    }
+
+    async loadStorage(){
+        try {
+            const result = await this.getLaunchInfoFromStorage();
+            console.log(result);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+
+
 
     componentDidMount(): void {
 
     }
 
+
+    // render() {
+    //     return (
+    //         (system.isAndroid == true && this.isFisrtLaunch == true) ? <GuideViewPager onStartBtnClicked={this._startYJL.bind(this)}/>:
+    //             <Navigator
+    //                 onNavigationStateChange={
+    //                     (prevState, currentState) => {
+    //                         const currentScene = getCurrentRouteName(currentState);
+    //                         const previousScene = getCurrentRouteName(prevState);
+    //                         if (previousScene !== currentScene) {
+    //                             if (lightContentScenes.indexOf(currentScene) >= 0) {
+    //                                 StatusBar.setBarStyle('light-content');
+    //                             } else {
+    //                                 StatusBar.setBarStyle('dark-content');
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             />
+    //     );
+    // }
 
     render() {
         return (
@@ -119,6 +171,14 @@ class RootScene extends PureComponent {
                 }
             />
         );
+    }
+
+    _startYJL(){
+        this.setState({
+            hideGuide: true
+        });
+        this.isFisrtLaunch = false;
+        StorageUtil.storageSave('AppIsFirstLaunch',false);
     }
 }
 
