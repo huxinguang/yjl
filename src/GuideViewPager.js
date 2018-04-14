@@ -26,8 +26,8 @@ class GuideViewPager extends PureComponent{
                     <View style = {styles.image1}/>
                     <View style = {styles.image2}/>
                     <View style = {styles.image3}>
-                        <Text style = {styles.text} onPress = {this.props.onStartBtnClicked && this.props.onStartBtnClicked()}>
-
+                        <Text style = {styles.text} onPress = {() =>{this.props.onStartBtnClicked && this.props.onStartBtnClicked()}}>
+                            {'start app'}
                         </Text>
                     </View>
                 </ViewPagerAndroid>

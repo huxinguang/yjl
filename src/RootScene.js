@@ -63,6 +63,8 @@ import ServiceDetailScene from './scene/Property/ServiceDetailScene';
 import ChatDetailScene from './scene/Neighbor/ChatDetailScene';
 import system from './common/system';
 import GuideViewPager from './GuideViewPager';
+import {connect} from 'react-redux';
+import {appIntro} from './actions/actions';
 
 const lightContentScenes = ['Home', 'Mine'];
 
@@ -124,61 +126,36 @@ class RootScene extends PureComponent {
         }
     }
 
-
-
-
     componentDidMount(): void {
 
     }
 
 
-    // render() {
-    //     return (
-    //         (system.isAndroid == true && this.isFisrtLaunch == true) ? <GuideViewPager onStartBtnClicked={this._startYJL.bind(this)}/>:
-    //             <Navigator
-    //                 onNavigationStateChange={
-    //                     (prevState, currentState) => {
-    //                         const currentScene = getCurrentRouteName(currentState);
-    //                         const previousScene = getCurrentRouteName(prevState);
-    //                         if (previousScene !== currentScene) {
-    //                             if (lightContentScenes.indexOf(currentScene) >= 0) {
-    //                                 StatusBar.setBarStyle('light-content');
-    //                             } else {
-    //                                 StatusBar.setBarStyle('dark-content');
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             />
-    //     );
-    // }
-
     render() {
+        let everLaunched = this.props.isLaunched;//不能在return中直接判断this.props.isLaunched的值。
         return (
-            <Navigator
-                onNavigationStateChange={
-                    (prevState, currentState) => {
-                        const currentScene = getCurrentRouteName(currentState);
-                        const previousScene = getCurrentRouteName(prevState);
-                        if (previousScene !== currentScene) {
-                            if (lightContentScenes.indexOf(currentScene) >= 0) {
-                                StatusBar.setBarStyle('light-content');
-                            } else {
-                                StatusBar.setBarStyle('dark-content');
+            ((system.isAndroid == true) && everLaunched == false ) ? <GuideViewPager onStartBtnClicked={this._startYJL.bind(this)}/>:
+                <Navigator
+                    onNavigationStateChange={
+                        (prevState, currentState) => {
+                            const currentScene = getCurrentRouteName(currentState);
+                            const previousScene = getCurrentRouteName(prevState);
+                            if (previousScene !== currentScene) {
+                                if (lightContentScenes.indexOf(currentScene) >= 0) {
+                                    StatusBar.setBarStyle('light-content');
+                                } else {
+                                    StatusBar.setBarStyle('dark-content');
+                                }
                             }
                         }
                     }
-                }
-            />
+                />
+
         );
     }
 
     _startYJL(){
-        this.setState({
-            hideGuide: true
-        });
-        this.isFisrtLaunch = false;
-        StorageUtil.storageSave('AppIsFirstLaunch',false);
+        this.props.dispatch(appIntro());//会改变store中的launched状态，并触发render()方法重新渲染视图
     }
 }
 
@@ -350,5 +327,11 @@ const Navigator = StackNavigator(
         }
     }
 );
+
+function select(store) {
+    return {
+        isLaunched: store.intro.launched
+    };
+}
 //make this component available to the app
-export default RootScene;
+export default connect(select)(RootScene);
