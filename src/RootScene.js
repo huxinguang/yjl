@@ -134,7 +134,7 @@ class RootScene extends PureComponent {
     render() {
         let everLaunched = this.props.isLaunched;//不能在return中直接判断this.props.isLaunched的值。
         return (
-            ((system.isAndroid == true) && everLaunched == false ) ? <GuideViewPager onStartBtnClicked={this._startYJL.bind(this)}/>:
+            (system.isAndroid == true && everLaunched == false ) ? <GuideViewPager onStartBtnClicked={this._startYJL.bind(this)}/>:
                 <Navigator
                     onNavigationStateChange={
                         (prevState, currentState) => {
@@ -328,10 +328,23 @@ const Navigator = StackNavigator(
     }
 );
 
-function select(store) {
+
+/*
+* The mapStateToProps function's first argument is the entire Redux store’s state and it returns an object to be passed as props.
+* mapStateToProps函数名、参数名可以自定义
+* */
+function mapStateToProps(state) {
     return {
-        isLaunched: store.intro.launched
+        isLaunched: state.intro.launched
     };
 }
-//make this component available to the app
-export default connect(select)(RootScene);
+
+/*
+* 官方文档： https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
+* connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])  关于connect函数说明详见
+* 参数带中括号表示可选参数
+* 参数1.The results of mapStateToProps must be a plain object, which will be merged into the component’s props. If you don't want to subscribe to store updates, pass null or undefined in place of [mapStateToProps].
+* 参数2.If you do not supply your own mapDispatchToProps function or object full of action creators, the default mapDispatchToProps implementation just injects dispatch into your component’s props
+* */
+
+export default connect(mapStateToProps)(RootScene);

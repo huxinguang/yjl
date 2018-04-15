@@ -480,92 +480,9 @@ class HomeScene extends PureComponent {
         );
     }
 
-    // render() {
-    //     return (
-    //         <ScrollView style={ styles.parent }>
-    //
-    //             <Text style={ styles.textStyle }>
-    //                 { this.state.appkey }
-    //             </Text>
-    //             <Text style={ styles.textStyle }>
-    //                 { this.state.imei }
-    //             </Text>
-    //             <Text style={ styles.textStyle }>
-    //                 { this.state.package }
-    //             </Text>
-    //             <Text style={ styles.textStyle }>
-    //                 { this.state.deviceId }
-    //             </Text>
-    //             <Text style={ styles.textStyle }>
-    //                 { this.state.version }
-    //             </Text>
-    //             <TouchableHighlight
-    //                 underlayColor='#0866d9'
-    //                 activeOpacity={ 0.5 }
-    //                 style={ styles.btnStyle }
-    //                 onPress={ this.jumpSetActivity }>
-    //                 <Text style={ styles.btnTextStyle }>
-    //                     设置
-    //                 </Text>
-    //             </TouchableHighlight>
-    //             <TouchableHighlight
-    //                 underlayColor='#0866d9'
-    //                 activeOpacity={ 0.5 }
-    //                 style={ styles.btnStyle }
-    //                 onPress={ this.onInitPress }>
-    //                 <Text style={ styles.btnTextStyle }>
-    //                     INITPUSH
-    //                 </Text>
-    //             </TouchableHighlight>
-    //             <TouchableHighlight
-    //                 underlayColor='#e4083f'
-    //                 activeOpacity={ 0.5 }
-    //                 style={ styles.btnStyle }
-    //                 onPress={ this.onStopPress }>
-    //                 <Text style={ styles.btnTextStyle }>
-    //                     STOPPUSH
-    //                 </Text>
-    //             </TouchableHighlight>
-    //             <TouchableHighlight
-    //                 underlayColor='#f5a402'
-    //                 activeOpacity={ 0.5 }
-    //                 style={ styles.btnStyle }
-    //                 onPress={ this.onResumePress }>
-    //                 <Text style={ styles.btnTextStyle }>
-    //                     RESUMEPUSH
-    //                 </Text>
-    //             </TouchableHighlight>
-    //             <TouchableHighlight
-    //                 underlayColor='#f5a402'
-    //                 activeOpacity={ 0.5 }
-    //                 style={ styles.btnStyle }
-    //                 onPress={ this.onGetRegistrationIdPress }>
-    //                 <Text style={ styles.btnTextStyle }>
-    //                     GET REGISTRATIONID
-    //                 </Text>
-    //             </TouchableHighlight>
-    //             <TouchableHighlight
-    //                 underlayColor='#f5a402'
-    //                 activeOpacity={ 0.5 }
-    //                 style={ styles.btnStyle }
-    //                 onPress={ this.jumpSecondActivity }>
-    //                 <Text style={ styles.btnTextStyle }>
-    //                     Go to SecondActivity
-    //                 </Text>
-    //             </TouchableHighlight>
-    //             <Text style={ styles.textStyle }>
-    //                 { this.state.pushMsg }
-    //             </Text>
-    //             <Text style={styles.textStyle}>
-    //                 { this.state.registrationId }
-    //             </Text>
-    //         </ScrollView>
-    //
-    //     )
-    // }
+
 }
 
-// define your styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -616,44 +533,15 @@ const styles = StyleSheet.create({
         color: color.theme
     }
 });
-//
-// var styles = StyleSheet.create({
-//     parent: {
-//         padding: 15,
-//         backgroundColor: '#f0f1f3'
-//     },
-//
-//     textStyle: {
-//         marginTop: 10,
-//         textAlign: 'center',
-//         fontSize: 20,
-//         color: '#808080'
-//     },
-//
-//     btnStyle: {
-//         marginTop: 10,
-//         borderWidth: 1,
-//         borderColor: '#3e83d7',
-//         borderRadius: 8,
-//         backgroundColor: '#3e83d7'
-//     },
-//     btnTextStyle: {
-//         textAlign: 'center',
-//         fontSize: 25,
-//         color: '#ffffff'
-//     },
-//     inputStyle: {
-//         borderColor: '#48bbec',
-//         borderWidth: 1,
-//
-//     },
-// });
 
-//make this component available to the app
-function select(store) {
+/*
+* The mapStateToProps function's first argument is the entire Redux store’s state and it returns an object to be passed as props.
+* mapStateToProps函数名、参数名可以自定义
+* */
+function mapStateToProps(state) {
     return {
-        isLoggedIn: store.user.isLoggedIn || store.user.hasSkippedLogin,
+        isLoggedIn: state.user.isLoggedIn || state.user.hasSkippedLogin,
     };
 }
 
-export default connect(select)(HomeScene);
+export default connect(mapStateToProps)(HomeScene);

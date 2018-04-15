@@ -277,12 +277,10 @@ const styles = StyleSheet.create({
     }
 });
 
-function select(store) {
+function mapStateToProps(state) {
     return {
-        isLoggedIn: store.user.isLoggedIn || store.user.hasSkippedLogin,
+        isLoggedIn: state.user.isLoggedIn || state.user.hasSkippedLogin,
     };
 }
 
-//make this component available to the app
-// export default connect(select)(MineScene);
-module.exports = connect(select)(MineScene);
+export default connect(mapStateToProps)(MineScene);
