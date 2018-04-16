@@ -17,10 +17,8 @@
 #import <React/RCTRootView.h>
 #import <RCTSplashScreen/RCTSplashScreen.h>
 
-static NSString * const APP_IS_FIRST_LAUNCH = @"AppIsFirstLaunch";
-
 @interface AppDelegate()
-@property (nonatomic, strong)RCTRootView *rootView;
+
 @end
 
 @implementation AppDelegate
@@ -34,28 +32,20 @@ static NSString * const APP_IS_FIRST_LAUNCH = @"AppIsFirstLaunch";
                         channel:nil apsForProduction:nil];
   
   
-  
   NSURL *jsCodeLocation;
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 //  jsCodeLocation = [NSURL URLWithString:@"http://192.168.10.202:8081/index.ios.bundle?platform=ios&dev=true"];
 
-  self.rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"YouJoyLife"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
-  self.rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-  [RCTSplashScreen show:self.rootView];
+  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+  [RCTSplashScreen show:rootView];//闪屏页
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  
-  if ([[NSUserDefaults standardUserDefaults] objectForKey:APP_IS_FIRST_LAUNCH] == nil) {
-    GuideViewController *guideVC = [[GuideViewController alloc]init];
-    guideVC.delegate = self;
-    self.window.rootViewController = guideVC;
-  }else{
-    UIViewController *rootViewController = [UIViewController new];
-    rootViewController.view = self.rootView;
-    self.window.rootViewController = rootViewController;
-  }
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = rootView;
+  self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   
   [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
@@ -66,14 +56,6 @@ static NSString * const APP_IS_FIRST_LAUNCH = @"AppIsFirstLaunch";
   return YES;
 }
 
-- (void)doSomethingForMe{
-  UIViewController *rootViewController = [UIViewController new];
-  rootViewController.view = self.rootView;
-  self.window.rootViewController = rootViewController;
-  [self.window makeKeyAndVisible];
-  [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithBool:YES] forKey:APP_IS_FIRST_LAUNCH];
-  [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 - (void)changeClickType{
   self.clickType = @"";

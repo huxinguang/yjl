@@ -61,7 +61,6 @@ import FixDetailScene from './scene/Property/FixDetailScene';
 import ComplaintDetailScene from './scene/Property/ComplaintDetailScene';
 import ServiceDetailScene from './scene/Property/ServiceDetailScene';
 import ChatDetailScene from './scene/Neighbor/ChatDetailScene';
-import system from './common/system';
 import GuideViewPager from './GuideViewPager';
 import {connect} from 'react-redux';
 import {appIntro} from './actions/actions';
@@ -133,8 +132,9 @@ class RootScene extends PureComponent {
 
     render() {
         let everLaunched = this.props.isLaunched;//不能在return中直接判断this.props.isLaunched的值。
+        // system.isAndroid == true &&
         return (
-            (system.isAndroid == true && everLaunched == false ) ? <GuideViewPager onStartBtnClicked={this._startYJL.bind(this)}/>:
+            (everLaunched == false) ? <GuideViewPager onStartBtnClicked={this._startYJL.bind(this)}/>:
                 <Navigator
                     onNavigationStateChange={
                         (prevState, currentState) => {
