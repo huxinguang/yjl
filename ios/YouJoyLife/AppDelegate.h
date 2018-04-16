@@ -8,13 +8,12 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "GuideViewController.h"
 
 static NSString *appKey = @"824b775cad8c115f7655dcad";     //填写appkey
 static NSString *channel = @"";    //填写channel   一般为nil
 static BOOL isProduction = false;  //填写isProdurion  平时测试时为false ，生产时填写true
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,GuideDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) NSString *clickType;

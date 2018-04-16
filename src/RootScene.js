@@ -132,7 +132,6 @@ class RootScene extends PureComponent {
 
     render() {
         let everLaunched = this.props.isLaunched;//不能在return中直接判断this.props.isLaunched的值。
-        // system.isAndroid == true &&
         return (
             (everLaunched == false) ? <GuideViewPager onStartBtnClicked={this._startYJL.bind(this)}/>:
                 <Navigator
