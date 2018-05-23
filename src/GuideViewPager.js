@@ -43,10 +43,7 @@ class GuideViewPager extends PureComponent {
 export default GuideViewPager;
 
 const styles = StyleSheet.create({
-    container: {
-        // flex:1,
-        // backgroundColor:'#4F9D9D'
-    },
+    container: {},
     image1: {
         flex: 1,
         backgroundColor: '#82D900',

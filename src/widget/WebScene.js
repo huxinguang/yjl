@@ -19,10 +19,10 @@ class WebScene extends PureComponent {
     }
 
     constructor(props: Object) {
-        super(props)
+        super(props);
         this.state = {
             source: {}
-        }
+        };
     }
 
     componentDidMount() {

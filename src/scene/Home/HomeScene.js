@@ -150,6 +150,7 @@ class HomeScene extends PureComponent {
             _this.requestData();
         });
 
+
         if(system.isAndroid){
             JPushModule.getInfo((map) => {
                 this.setState({
@@ -388,7 +389,7 @@ class HomeScene extends PureComponent {
         return (
             <View>
 
-                <HomeBanner bannerInfos={this.state.banners} onBannerSelected={this.onBannerSelected}/>
+                <HomeBanner bannerInfos={this.state.banners} onBannerSelected={this.onBannerSelected.bind(this)}/>
 
                 <SpacingView/>
 
