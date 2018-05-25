@@ -36,6 +36,7 @@ class GuideViewPager extends PureComponent {
             </Swiper>
 
         );
+        
     }
 
 }
